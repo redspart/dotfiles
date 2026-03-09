@@ -1,15 +1,11 @@
 local server_list = { "lua_ls", "efm", "rust_analyzer", "terraformls",
     "jedi_language_server", "gopls" }
+
 require("mason").setup()
 require("mason-lspconfig").setup({ ensure_installed = server_list })
-local lspConfig = require("lspconfig")
-
 
 local nnoremap = require("core.keymap").nnoremap
-
-
 local custom_on_attach = function(_)
-    -- actions
     nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { silent = true })
     nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
     nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
@@ -18,27 +14,21 @@ local custom_on_attach = function(_)
     nnoremap("<space>f", "<cmd>lua vim.lsp.buf.format()<CR>")
     nnoremap("<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
     nnoremap("<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
-
-    -- workspace
     nnoremap("<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", { silent = true })
     nnoremap("<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", { silent = true })
     nnoremap("<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", { silent = true })
-
-    -- moveme
     nnoremap("<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
     nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
-    nnoremap("<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", { silent = true })
-    nnoremap("<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", { silent = true })
-
-    -- diagno
-    nnoremap("[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", { silent = true })
-    nnoremap("]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", { silent = true })
+    nnoremap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { silent = true })
+    nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { silent = true })
+    nnoremap("<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true })
+    nnoremap("<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", { silent = true })
 end
 
 for _, lsp in ipairs(server_list) do
-    lspConfig[lsp].setup { on_attach = custom_on_attach }
+    vim.lsp.config(lsp, { on_attach = custom_on_attach })
+    vim.lsp.enable(lsp)
 end
-
 
 -- compe
 --compe = {}

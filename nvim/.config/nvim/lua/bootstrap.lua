@@ -32,10 +32,6 @@ return require('packer').startup(function(use)
     use 'davidhalter/jedi-vim'
     --use 'puremourning/vimspector'
 
-    -- Rust
-    use 'simrat39/rust-tools.nvim'
-
-
     -- Worktree
     use 'ThePrimeagen/git-worktree.nvim'
 
