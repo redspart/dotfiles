@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
 
     -- Python
     use 'davidhalter/jedi-vim'
-    use 'puremourning/vimspector'
+    --use 'puremourning/vimspector'
 
     -- Rust
     use 'simrat39/rust-tools.nvim'
@@ -45,8 +45,8 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
 
     -- Themes
-    use 'ray-x/starry.nvim'
-    --use 'gruvbox-community/gruvbox'
+    --use 'ray-x/starry.nvim'
+    use 'gruvbox-community/gruvbox'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

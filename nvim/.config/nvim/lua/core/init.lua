@@ -4,6 +4,7 @@ require "nvim-treesitter.configs".setup {
     indent = { enable = true }
 }
 
+
 require("core.sets")
 require("core.lsp")
 require("core.compe-config")

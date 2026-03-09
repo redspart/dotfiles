@@ -5,4 +5,4 @@ require("core")
 vim.g.do_filetype_lua = 1
 vim.g.mapleader = " "
 
-vim.cmd [[ colorscheme dracula_blood ]]
+vim.cmd [[ colorscheme gruvbox ]]

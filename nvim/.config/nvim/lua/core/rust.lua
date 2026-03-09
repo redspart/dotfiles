@@ -1,7 +1,7 @@
 local opts = {
     tools = { -- rust-tools options
         autoSetHints = true,
-        hover_with_actions = true,
+        --hover_with_actions = true,
         inlay_hints = {
             show_parameter_hints = true,
             parameter_hints_prefix = " ",
@@ -16,7 +16,7 @@ local opts = {
                 },
                 diagnostics = {
                     enable = true,
-                    disabled = {"unresolved-proc-macro"},
+                    disabled = { "unresolved-proc-macro" },
                     enableExperimental = true
                 }
             }

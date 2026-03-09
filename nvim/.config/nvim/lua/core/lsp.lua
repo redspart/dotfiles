@@ -1,4 +1,4 @@
-local server_list = { "lua_ls", "efm", "ansiblels", "rust_analyzer", "tsserver", "terraformls",
+local server_list = { "lua_ls", "efm", "rust_analyzer", "terraformls",
     "jedi_language_server", "gopls" }
 require("mason").setup()
 require("mason-lspconfig").setup({ ensure_installed = server_list })
